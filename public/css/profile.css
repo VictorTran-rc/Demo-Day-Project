@@ -1,0 +1,7 @@
+li{
+  list-style-type: none;
+  display: inline;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  font-size: 1.3rem;
+}

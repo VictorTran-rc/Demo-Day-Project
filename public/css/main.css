@@ -41,6 +41,13 @@ li{
   margin: 5px;
   height: auto;
 }
+#orangeline{
+  border: white 2px solid;
+  /* padding: 1%; */
+  width: 70%;
+  margin: 5px;
+  height: auto;
+}
 .map{
   text-align: center;
   display: flex;

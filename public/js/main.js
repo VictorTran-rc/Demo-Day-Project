@@ -117,3 +117,15 @@ $(window).on('load', function() {
 	});
 
 })(jQuery);
+
+const map = document.querySelector('#tripPlanner')
+const favorites = document.querySelectorAll('.favorite')
+const start = document.querySelectorAll('.start')
+const end = document.querySelectorAll('.end')
+map.src = `https://www.google.com/maps/embed/v1/directions?key=AIzaSyBCrlrUUk-AoKylJkMz4gagA3SCCpaakJU&origin=boston&destination=${'new york'}&mode=transit`
+
+for (let i = 0; i < favorites.length; i++) {
+	favorites[i].addEventListener('click', () => {
+		map.src = `https://www.google.com/maps/embed/v1/directions?key=AIzaSyBCrlrUUk-AoKylJkMz4gagA3SCCpaakJU&origin=${start[i].innerHTML}&destination=${end[i].innerHTML}&mode=transit`
+	})
+}

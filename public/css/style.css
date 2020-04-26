@@ -101,8 +101,8 @@ Helper CSS
 }
 
 .spad {
-	padding-top: 106px;
-	padding-bottom: 106px;
+	padding-top: 50px;
+	padding-bottom: 50px;
 }
 
 .text-white h1,
@@ -416,11 +416,11 @@ Header section
 }
 
 .blog-section .blog-posts {
-	margin-bottom: -70px;
+	margin-bottom: -50px;
 }
 
 .blog-post {
-	margin-bottom: 70px;
+	margin-bottom: 50px;
 }
 
 .blog-post img {
@@ -558,7 +558,7 @@ Header section
 }
 
 .sb-widget {
-	margin-bottom: 75px;
+	margin-top: 50px;
 }
 
 .sb-widget:last-child {
@@ -930,7 +930,7 @@ Footer section
 
 .footer-section {
 	background: #000000;
-	padding-top: 73px;
+	/* padding-top: 73px; */
 }
 
 .footer-widget {
@@ -1189,7 +1189,7 @@ Responsive
  ---------------------*/
 
 .characters-section {
-	padding: 144px 0 118px;
+	padding: 80px 0 80px;
 	overflow: hidden;
 	position: relative;
 }
@@ -1820,4 +1820,9 @@ Responsive
 	.game-title h2 {
 		font-size: 36px;
 	}
+}
+
+.favorite:hover {
+	background: grey;
+	cursor: pointer;
 }
