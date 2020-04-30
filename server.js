@@ -10,7 +10,7 @@ const MongoClient = require('mongodb').MongoClient
 var mongoose = require('mongoose'); //Mongoose is an Object Data Modeling (ODM) library for MongoDB and Node.
 var passport = require('passport'); //Passport is authentication middleware for Node. js.
 var flash = require('connect-flash'); //FlashJS is JavaScript graphics and game development engine with API similar to Flash one
-
+const objectId = require('mongodb').ObjectI
 var morgan = require('morgan'); //Morgan: is another HTTP request logger middleware for Node. js.
 var cookieParser = require('cookie-parser'); //cookie-parser is a middleware which parses cookies attached to the client request object.
 // bodyParser allows us to select only the information that we want to grab
@@ -47,6 +47,24 @@ app.post('/', (req, res) => {
   );
 });
 
+var GtfsRealtimeBindings = require('gtfs-realtime-bindings');
+var request = require('request');
+
+var requestSettings = {
+  method: 'GET',
+  url: 'URL OF YOUR GTFS-REALTIME SOURCE GOES HERE',
+  encoding: null
+};
+request(requestSettings, function (error, response, body) {
+  if (!error && response.statusCode == 200) {
+    var feed = GtfsRealtimeBindings.FeedMessage.decode(body);
+    feed.entity.forEach(function(entity) {
+      if (entity.trip_update) {
+        console.log(entity.trip_update);
+      }
+    });
+  }
+});
 var bodyParser = require('body-parser');
 // In order to get access to the post data we have to use body-parser. Basically what the body-parser is which allows express to read the body and then parse that into a Json object that we can understand.
 var session = require('express-session');
@@ -60,7 +78,7 @@ mongoose.connect(configDB.url, (err, database) => { // .connect is a method used
   if (err) return console.log(err)
   console.log("connected to db")
   db = database
-  require('./app/routes.js')(app, passport, db, nexmo);
+  require('./app/routes.js')(app, passport, db, nexmo, objectId);
 }); // connect to our database
 
 require('./config/passport')(passport, nexmo); // pass passport for configuration
@@ -113,6 +131,9 @@ function find_closest_marker(event) {
 
   alert(map.markers[closest].title);
 }
+
+
+
 // routes ======================================================================
 //require('./app/routes.js')(app, passport, db); // load our routes and pass in our app and fully configured passport
 

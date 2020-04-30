@@ -81,8 +81,7 @@
 							<div class="favorite">
 								<li class="start"> <%= favorites[i].start %><li> <span> to</span>
 								<li class="end"> <%= favorites[i].end %></li>
-								<span><i class="fa fa-trash" aria-hidden="true"></i></span>
-								<br>
+								<span> <i id="<%= favorites[i]._id %>" class="far fa-minus-square"></i></span>
 							</div>
 						<% } %>
 				</ul>
@@ -108,9 +107,9 @@
 		<div class="social-links-warp">
 			<div class="container">
 				<div class="social-links">
-					<a href="#"><i class="fa fa-instagram"></i><span>instagram</span></a>
-					<a href="#"><i class="fa fa-facebook"></i><span>facebook</span></a>
-					<a href="#"><i class="fa fa-twitter"></i><span>twitter</span></a>
+					<a href="https://www.linkedin.com/in/victorphitran/"><i class="fab fa-linkedin"></i><span>linkedin</span></a>
+					<a href="https://github.com/VictorTran-rc"><i class="fab fa-github-alt"></i></i><span>GitHub</span></a>
+					<a href="https://twitter.com/Victor95015112"><i class="fa fa-twitter"></i><span>twitter</span></a>
 				</div>
 			</div>
 		</div>
@@ -124,7 +123,7 @@
 	<script src="../js/circle-progress.min.js"></script>
 	<script src="../js/jquery.magnific-popup.min.js"></script>
 	<script src="../js/main.js"></script>
-	<script src="../js/favorites.js"></script>
+	<script src="../js/delete.js"></script>
 
 	</body>
 </html>

@@ -2,7 +2,9 @@
 const Favorites = require('./models/favorites')
 const mongoose = require('mongoose')
 const axios = require('axios')
-module.exports = function(app, passport, db) {
+const Nexmo = require('nexmo')
+
+module.exports = function(app, passport, db, nexmo, objectId) {
 
   // normal routes ===============================================================
 
@@ -176,14 +178,42 @@ module.exports = function(app, passport, db) {
     const newFavorite = new Favorites({
       email: req.user.local.email,
       start: req.body.start,
-      end: req.body.end
+      end: req.body.end,
     })
     newFavorite.save()
       .then(() => {
-        res.render('index')
+        console.log('newFavoriteSavedTo', newFavorite);
+        let nexmo = new Nexmo({
+          apiKey: '3797d477',
+          apiSecret: 'nXuD9v2nzWm4t5iT'
+        },{debug:true})
+        const number = req.user.phoneNumber
+        const text = `https://www.google.com/maps/dir/${req.body.start}/${req.body.end}/@42.3211926,-71.0893502`
+        const sendSms = req.body.sendSms
+        console.log(number, text, sendSms, "number", "text", "sendSms");
+        if( sendSms === true){
+        nexmo.message.sendSms(
+          '19564482986', number, text, { type: 'unicode' },
+          (err, responseData) => {
+            if (err) {
+              console.log(err);
+            } else {
+              const { messages } = responseData;
+              const { ['message-id']: id, ['to']: number, ['error-text']: error } = messages[0];
+              console.dir(responseData);
+              // Get data from response
+              const data = {
+                id,
+                number,
+                error
+              };
+            }
+          }
+        )}
       })
-      .catch(err => console.log(err))
+      .catch(err => console.log("favoritesFailed",err))
   })
+
   // app.post('/favorites', (req, res) => {
   //   console.log(req.user);
   //   const sendMessage = new message({
@@ -255,6 +285,16 @@ module.exports = function(app, passport, db) {
       res.send('Message deleted!')
     })
   })
+
+  app.delete('/favorites', (req, res) => {
+  console.log(req.body.id);
+  const deleteRoute = objectId(req.body.id)
+  console.log(deleteRoute);
+  db.collection('favorites').findOneAndDelete({_id: deleteRoute},(err, result) => {
+    if (err) return res.send(500, err)
+    res.send('Message deleted!')
+  })
+})
 
   //Authenticates the user and makes sure user is logged in and only on their account  =============================================================================
   // AUTHENTICATE (FIRST LOGIN) ==================================================

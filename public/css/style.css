@@ -566,7 +566,7 @@ Header section
 }
 
 .sb-widget .sb-title {
-	font-size: 18px;
+	font-size: 19px;
 	font-weight: 700;
 	color: #fff;
 	margin-bottom: 60px;
@@ -598,6 +598,7 @@ Header section
 	font-size: 16px;
 }
 
+
 .sb-cata-list li span {
 	float: right;
 	display: inline-block;
@@ -606,29 +607,29 @@ Header section
 	font-size: 11px;
 	color: #1c1c1c;
 	border-radius: 35px;
-	background: #fff;
+	background: #da2a1c;
 	text-align: center;
 	padding: 5px 5px 0;
 }
 
 .sb-cata-list li:nth-child(1) span {
-	background: #10ddb4;
+	background: #003da5;
 }
 
 .sb-cata-list li:nth-child(2) span {
-	background: #ff1980;
+	background: #01843d;
 }
 
 .sb-cata-list li:nth-child(3) span {
-	background: #ffe119;
+	background: #01843d;
 }
 
 .sb-cata-list li:nth-child(4) span {
-	background: #5da9e4;
+	background: #01843d;
 }
 
 .sb-cata-list li:nth-child(5) span {
-	background: #bd9bd2;
+	background: #01843d;
 }
 
 .sb-cata-list li:nth-child(6) span {

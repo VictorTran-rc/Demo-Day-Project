@@ -1,5 +1,15 @@
 const getClosestStationButton = document.querySelector('#getClosestStation')
 getClosestStationButton.addEventListener('click', getClosestStation);
+document.querySelector('#end').addEventListener('keyup', event => {
+  if(event.key === 'Enter') {
+    getClosestStation();
+  }
+})
+document.querySelector('#start').addEventListener('keyup', event => {
+  if(event.key === 'Enter') {
+    getClosestStation();
+  }
+})
 
 const getCurrentLocationBtn = document.querySelector('#getCurrentLocation')
 let currentLocationInput = document.querySelector('#start')

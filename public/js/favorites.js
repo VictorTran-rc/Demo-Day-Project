@@ -1,10 +1,13 @@
 const addBtn = document.getElementById('add');
-var trash = document.getElementsByClassName("fa-trash");
+
 document.getElementById('add').addEventListener('click', addToFavorites)
+
 
 function addToFavorites() {
   let startPosition = document.querySelector('#start').value
   let endPostion = document.querySelector('#end').value
+  let sendSms = document.getElementById("sendSms").checked;
+  console.log('sendSms', sendSms);
   console.log(startPosition, endPostion);
   fetch('/favorites', {
       method: 'post',
@@ -13,7 +16,8 @@ function addToFavorites() {
       },
       body: JSON.stringify({
         start: startPosition,
-        end: endPostion
+        end: endPostion,
+        sendSms: sendSms
       })
     })
     .then(response => {
@@ -24,20 +28,3 @@ function addToFavorites() {
       window.location.reload(true)
     })
 }
-Array.from(trash).forEach(function(element) {
-      element.addEventListener('click', function(){
-        const name = this.parentNode.parentNode.childNodes[1].innerText
-        fetch('favorites', {
-          method: 'delete',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({
-            'name': name,
-            'msg': msg
-          })
-        }).then(function (response) {
-          window.location.reload()
-        })
-      });
-});
