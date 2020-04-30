@@ -4,7 +4,7 @@
 // get all the tools we need
 var express = require('express');
 var app = express();
-var port = process.env.PORT || 8000; //localhost url, able to change if need be
+var port = process.env.PORT || 7000; //localhost url, able to change if need be
 const MongoClient = require('mongodb').MongoClient
 //server node modules. In order to run
 var mongoose = require('mongoose'); //Mongoose is an Object Data Modeling (ODM) library for MongoDB and Node.

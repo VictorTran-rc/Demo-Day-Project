@@ -288,9 +288,12 @@ module.exports = function(app, passport, db, nexmo, objectId) {
 
   app.delete('/favorites', (req, res) => {
   console.log(req.body.id);
-  const deleteRoute = objectId(req.body.id)
-  console.log(deleteRoute);
-  db.collection('favorites').findOneAndDelete({_id: deleteRoute},(err, result) => {
+  // const deleteRoute = objectId(req.body.id)
+  db.collection('favorites').findOneAndDelete({
+    email: req.user.local.email,
+    start: req.body.start,
+    end: req.body.end
+  },(err, result) => {
     if (err) return res.send(500, err)
     res.send('Message deleted!')
   })

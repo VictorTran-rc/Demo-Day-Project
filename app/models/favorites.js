@@ -16,6 +16,9 @@ const FavoritesSchema = new Schema({
   },
   smsStatus: {
     type: String
+  },
+  url: {
+    type: String
   }
 });
 
