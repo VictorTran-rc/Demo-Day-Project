@@ -33,7 +33,7 @@ function getClosestStation() {
   startPosition = startPosition.split(' ').join('+')
   endPostion = endPostion.split(' ').join('+');
 
-  let getAddress = `https://www.google.com/maps/embed/v1/directions?key=AIzaSyBCrlrUUk-AoKylJkMz4gagA3SCCpaakJU&origin=${startPosition}&destination=${endPostion}&mode=transit`
+  let getAddress = `https://www.google.com/maps/embed/v1/directions?key={googlemapsAPIKEY}&origin=${startPosition}&destination=${endPostion}&mode=transit`
 
   document.getElementById('tripPlanner').src = getAddress
 }
